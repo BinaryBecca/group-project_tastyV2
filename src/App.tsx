@@ -14,8 +14,8 @@ const router = createBrowserRouter(
 )
 
 function App() {
-  categories()
-  meals("Seafood")
+  // categories()
+  // meals("Seafood")
   return (
     <>
       <RouterProvider router={router} />
