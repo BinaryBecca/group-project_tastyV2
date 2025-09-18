@@ -2,6 +2,7 @@ import axios from "axios"
 import type { IMeal, IMeals } from "../interfaces/IMeals"
 import { createContext, useEffect, useState } from "react"
 
+//Den Context erstellen, damit die Daten in der ganzen App verfügbar sind
 export const mealContext = createContext<MealProviderProps | null>(null)
 
 export interface MealProviderProps {
@@ -30,7 +31,6 @@ export default function MealProvider({ children }: { children: React.ReactNode }
         console.error(error)
       }
     }
-
     getData()
   }, [searchTerm])
 
