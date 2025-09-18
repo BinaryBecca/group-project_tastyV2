@@ -1,5 +1,6 @@
 import { useState } from "react"
 import type { IMeal } from "../../interfaces/IMeals"
+import Modal from "../modal/Modal"
 
 interface MealsCardProps {
   meal: IMeal
@@ -18,6 +19,13 @@ export default function MealsCard({ meal, backgroundColor = "bg-primary" }: Meal
         <h3 className="font-poppins font-semibold text-white text-4xl">{meal.strMeal}</h3>
         <img src={meal.strMealThumb} alt={meal.idMeal} />
       </div>
+      {showModal && (
+        <Modal
+          onClose={() => {
+            setShowModal(false)
+          }}
+        />
+      )}
     </>
   )
 }
