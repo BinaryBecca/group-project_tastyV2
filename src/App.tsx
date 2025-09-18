@@ -2,6 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Layout from "./layout/Layout"
 import Home from "./pages/home/Home"
 import Meals from "./pages/meals/Meals"
+import { categories } from "./functions/Functions"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
 )
 
 function App() {
+  categories()
   return (
     <>
       <RouterProvider router={router} />
