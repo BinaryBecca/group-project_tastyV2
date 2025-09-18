@@ -51,7 +51,7 @@ export async function getMealDetails(id: string): Promise<IMealDetail | null> {
     if (data.meals) {
       console.log(data)
       console.log(data.meals[0])
-      return data.meals[0]
+      return data.meals[0] ?? null
     }
   } catch (error) {
     console.error("Fehler beim Abrufen der Details", error)
