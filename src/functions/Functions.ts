@@ -20,9 +20,11 @@ export const categories = async (): Promise<ICategories | null> => {
 export const meals = async (category: string): Promise<IMeals | null> => {
   try {
     const resp = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
-    // console.log(resp)
-    // console.log(resp.data.categories)
-    if (resp.data.meals) return resp.data
+    if (resp.data.meals) {
+      console.log("resp.data", resp.data)
+      console.log("resp.data.meals", resp.data.meals)
+      return resp.data
+    }
   } catch (error) {
     console.error("Fehler beim Abrufen der Kategorien", error)
     return null
