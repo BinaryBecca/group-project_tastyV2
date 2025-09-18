@@ -5,8 +5,14 @@
   src: url("/fonts/Poppins-Regular.ttf");
 }
 
+@font-face {
+  font-family: PoppinsBold;
+  src: url("/fonts/Poppins-Bold.ttf");
+}
+
 @theme {
   --font-poppins: Poppins, sans-serif;
+  --font-poppins-bold: PoppinsBold, sans-serif;
   --color-primary: #96c0b7;
   --color-secondary: #d4dfc7;
   --color-secondary-soft: #d4dfc780;
