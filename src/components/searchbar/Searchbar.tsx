@@ -1,12 +1,12 @@
-import { useRef } from "react"
+import Button from "../button/Button"
+import Input from "../input/Input"
 
 export default function Searchbar() {
-  const inputRef = useRef<HTMLInputElement>(null)
-
   return (
     <div>
-      <h1 className="font-poppins text-[54px] text-primary">Find a recipe, an idea, an inspiration...</h1>
-      <input className="" type="text" placeholder="Type something to search" ref={inputRef} />
+      <h1 className="font-poppins text-[54px] text-primary mb-9">Find a recipe, an idea, an inspiration...</h1>
+      <Input />
+      <Button label="Search" />
     </div>
   )
 }
