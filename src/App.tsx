@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Layout from "./layout/Layout"
 import Home from "./pages/home/Home"
 import Meals from "./pages/meals/Meals"
-import { getMealDetails } from "./functions/Functions"
+// import { getMealDetails } from "./functions/Functions"
 // import { categories, meals } from "./functions/Functions"
 
 const router = createBrowserRouter(
@@ -17,7 +17,7 @@ const router = createBrowserRouter(
 function App() {
   // categories()
   // meals("Seafood")
-  getMealDetails("52772")
+  // getMealDetails("52772")
   return (
     <>
       <RouterProvider router={router} />

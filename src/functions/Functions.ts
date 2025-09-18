@@ -1,6 +1,6 @@
 import axios from "axios"
 import type { ICategories } from "../interfaces/ICategories"
-import type { IMeals } from "../interfaces/IMeals"
+import type { IMealDetail, IMeals } from "../interfaces/IMeals"
 
 const api = axios.create({ baseURL: "https://www.themealdb.com/api/json/v1/1" })
 
@@ -45,7 +45,7 @@ export const meals = async (category: string): Promise<IMeals | null> => {
 }
 
 // # Meal Details
-export async function getMealDetails(id: string) {
+export async function getMealDetails(id: string): Promise<IMealDetail | null> {
   try {
     const { data } = await api.get(`/lookup.php?i=${id}`)
     if (data.meals) {
