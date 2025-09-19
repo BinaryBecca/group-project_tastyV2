@@ -1,8 +1,9 @@
-import type { IMeal, IMeals } from "../interfaces/IMeals"
+import type { IMeal } from "../interfaces/IMeals"
 import { createContext, useEffect, useState } from "react"
 import { searchMealByName } from "../functions/Functions"
 
 //Den Context erstellen, damit die Daten in der ganzen App verfügbar sind
+// eslint-disable-next-line react-refresh/only-export-components
 export const mealContext = createContext<MealProviderProps | null>(null)
 
 export interface MealProviderProps {
