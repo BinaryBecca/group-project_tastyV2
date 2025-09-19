@@ -17,16 +17,6 @@ export default function Modal({ meal, onClose }: ModalProps) {
 
   if (!meal) return null
 
-  const ingredientList: string[] = []
-  for (let i = 1; i <= 20; i++) {
-    const ingredient = meal[`strIngredient${i}`]
-    const measure = meal[`strMeasure${i}`]
-
-    if (ingredient) {
-      ingredientList.push(`${measure} ${ingredient}`.trim())
-    }
-  }
-
   return (
     <dialog
       className="place-self-center px-16 py-12 h-full w-full flex flex-col justify-between gap-8 bg-primary text-white rounded-2xl border-2"
@@ -51,9 +41,9 @@ export default function Modal({ meal, onClose }: ModalProps) {
           <div>
             <h2 className="text-4xl py-10">Ingredients</h2>
             <ul>
-              {ingredientList.map((item, index) => (
+              {meal.ingredients.map((listItem, index) => (
                 <li className="text-2xl leading-[1.8]" key={index}>
-                  {item}
+                  {listItem.measure} {listItem.ingredient}
                 </li>
               ))}
             </ul>
