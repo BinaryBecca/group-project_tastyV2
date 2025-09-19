@@ -12,6 +12,7 @@ export default function MealsCard({ meal, backgroundColor = "bg-primary" }: Meal
   const [showModal, setShowModal] = useState(false)
   const [mealDetail, setMealDetails] = useState<IMealDetail | null>(null)
 
+  // Detailinfos anzeigen und Modalansicht öffnen
   const openModalComponent = async () => {
     const details = await getMealDetails(meal.idMeal)
     setMealDetails(details)
