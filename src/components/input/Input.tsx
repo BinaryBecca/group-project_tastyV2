@@ -1,7 +1,17 @@
-import { useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
+import { mealContext, type MealProviderProps } from "../../context/mealProvider"
 
 export default function Input() {
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const { setSearchTerm } = useContext(mealContext) as MealProviderProps
+
+  useEffect(() => {
+    if (inputRef.current) {
+      setSearchTerm(inputRef.current?.value)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputRef.current?.value])
 
   return (
     <input

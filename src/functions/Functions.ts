@@ -21,7 +21,7 @@ export const searchMealByName = async (mealName: string): Promise<IMeals | null>
 }
 
 // #Fetching Categories
-export const categories = async (): Promise<ICategories | null> => {
+export const getCategories = async (): Promise<ICategories | null> => {
   try {
     const resp = await api.get(`/categories.php`)
     if (resp.data.categories) return resp.data
@@ -33,7 +33,7 @@ export const categories = async (): Promise<ICategories | null> => {
 }
 
 // #Fetching Meals
-export const meals = async (category: string): Promise<IMeals | null> => {
+export const getMeals = async (category: string): Promise<IMeals | null> => {
   try {
     const resp = await api.get(`/filter.php?c=${category}`)
     if (resp.data.meals) return { meals: resp.data.meals }
