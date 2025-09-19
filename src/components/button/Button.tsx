@@ -18,15 +18,7 @@ export default function Button({ label, onClick, backbutton = false, toTop = fal
         backbutton && "w-12 h-12 fixed top-5 left-5 rounded-full"
       } ${toTop && "w-12 h-12 fixed bottom-5 right-5 rounded-full"}`}
       onClick={
-        backbutton
-          ? () => {
-              console.log("zurück geklickt")
-              console.log("history", window.history)
-              navigate(-1)
-            }
-          : toTop
-          ? () => window.scrollTo({ top: 0, behavior: "smooth" })
-          : onClick
+        backbutton ? () => navigate(-1) : toTop ? () => window.scrollTo({ top: 0, behavior: "smooth" }) : onClick
       }>
       {backbutton ? "←" : toTop ? "↑" : label}
     </button>

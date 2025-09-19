@@ -49,8 +49,6 @@ export async function getMealDetails(id: string): Promise<IMealDetail | null> {
   try {
     const { data } = await api.get(`/lookup.php?i=${id}`)
     if (data.meals) {
-      // console.log(data)
-      // console.log(data.meals[0])
       const mealDetail = data.meals[0]
 
       // Maßeinheit + Ingredients in eigenes Array

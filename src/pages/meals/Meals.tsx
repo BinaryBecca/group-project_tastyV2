@@ -1,11 +1,10 @@
 import { useSearchParams } from "react-router"
 import List from "../../components/list/List"
-import { dummyMeals } from "../../data/data"
 import Button from "../../components/button/Button"
 import { useContext, useEffect, useState } from "react"
 import { mealContext, type MealProviderProps } from "../../context/mealProvider"
 import type { IMeal, IMeals } from "../../interfaces/IMeals"
-import { getMeals } from "../../functions/Functions"
+import { getMeals, searchMealByName } from "../../functions/Functions"
 
 export default function Meals() {
   const [meals, setMeals] = useState<IMeals | null>(null)
@@ -19,11 +18,15 @@ export default function Meals() {
 
   useEffect(() => {
     const meals = async () => {
-      setMeals(await getMeals(category ?? ""))
+      if (category) {
+        setMeals(await getMeals(category ?? ""))
+      } else if (search) {
+        setMeals(await searchMealByName(search ?? ""))
+      }
     }
 
     meals()
-  }, [category])
+  }, [category, search])
 
   useEffect(() => {
     if (meals?.meals) {
@@ -35,7 +38,7 @@ export default function Meals() {
     <>
       <Button backbutton />
       {category && <List title={`Everything ${category}`} type="meals" items={mealList} />}
-      {search && <List title={`Everything ${searchTerm}`} type="meals" items={dummyMeals.meals} />}
+      {search && <List title={`Everything ${searchTerm}`} type="meals" items={mealList} />}
     </>
   )
 }

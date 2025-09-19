@@ -18,8 +18,6 @@ export interface IMealDetail {
   strMealThumb: string
   strYoutube: string
   ingredients: IIngredientList[]
-
-  // meals: { [key: string]: null | string }[]
 }
 
 export interface IIngredientList {

@@ -15,9 +15,6 @@ const router = createBrowserRouter(
 )
 
 function App() {
-  // categories()
-  // meals("Seafood")
-  // getMealDetails("52772")
   return (
     <>
       <RouterProvider router={router} />

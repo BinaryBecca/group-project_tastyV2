@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from "react"
 import { searchMealByName } from "../functions/Functions"
 
 //Den Context erstellen, damit die Daten in der ganzen App verfügbar sind
-// eslint-disable-next-line react-refresh/only-export-components
 export const mealContext = createContext<MealProviderProps | null>(null)
 
 export interface MealProviderProps {
@@ -34,25 +33,6 @@ export default function MealProvider({ children }: { children: React.ReactNode }
 
     fetchMeals()
   }, [searchTerm])
-
-  //Alte Version
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       if (!searchTerm) {
-  //         setMeals([])
-  //         return
-  //       }
-
-  //       const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
-  //       const resp = await axios.get<IMeals>(url)
-  //       setMeals(resp.data.meals)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  //   }
-  //   getData()
-  // }, [searchTerm])
 
   return (
     <mealContext.Provider
