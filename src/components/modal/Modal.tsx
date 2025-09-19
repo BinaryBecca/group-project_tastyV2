@@ -19,22 +19,22 @@ export default function Modal({ meal, onClose }: ModalProps) {
 
   return (
     <dialog
-      className="place-self-center px-16 py-12 h-full w-full flex flex-col justify-between gap-8 bg-primary text-white rounded-2xl border-2"
+      className="font-poppins place-self-center px-16 py-12 h-full w-full flex flex-col justify-between gap-8 bg-primary text-white rounded-2xl border-2"
       ref={dialogRef}
       onClose={onClose}>
-      <button className="absolute top-4 right-4 text-2xl" onClick={() => dialogRef.current?.close()}>
+      <button className="font-poppins absolute top-4 right-4 text-2xl" onClick={() => dialogRef.current?.close()}>
         X
       </button>
       <section className="grid grid-rows">
         <img className="w-full max-h-[50vh] object-cover" src={meal?.strMealThumb} alt={meal?.strMeal} />
         <div className="grid grid-cols-[2fr_1fr] justify-center gap-20">
           <div>
-            <h2 className="text-4xl py-10">{meal?.strMeal}</h2>
+            <h2 className="font-poppins text-4xl py-10">{meal?.strMeal}</h2>
             <ul>
               {meal?.strInstructions.split("\n").map(
                 (description, index) =>
                   description.trim() && (
-                    <li className="text-2xl leading-[1.8] mb-8" key={index}>
+                    <li className="font-poppins text-2xl leading-[1.8] mb-8" key={index}>
                       • {description}
                     </li>
                   )
@@ -42,11 +42,11 @@ export default function Modal({ meal, onClose }: ModalProps) {
             </ul>
           </div>
           <div>
-            <h2 className="text-4xl py-10">Ingredients</h2>
+            <h2 className="font-poppins text-4xl py-10">Ingredients</h2>
 
-            <ul className="mb-15">
+            <ul className="mb-15 font-poppins">
               {meal.ingredients.map((listItem, index) => (
-                <li className="text-3xl leading-[1.8]" key={index}>
+                <li className="font-poppins text-3xl leading-[1.8]" key={index}>
                   {listItem.measure} {listItem.ingredient}
                 </li>
               ))}
@@ -55,7 +55,7 @@ export default function Modal({ meal, onClose }: ModalProps) {
             <a
               href={meal.strYoutube}
               target="_blank"
-              className="text-2xl text-primary font-bold bg-white p-5 rounded-2xl hover:text-white hover:bg-secondary cursor-pointer">
+              className="font-poppins text-2xl text-primary font-bold bg-white p-5 rounded-2xl hover:text-white hover:bg-secondary cursor-pointer">
               Watch on YouTube
             </a>
           </div>
