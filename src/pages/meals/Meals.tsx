@@ -1,8 +1,7 @@
 import { useSearchParams } from "react-router"
 import List from "../../components/list/List"
 import Button from "../../components/button/Button"
-import { useContext, useEffect, useState } from "react"
-import { mealContext, type MealProviderProps } from "../../context/mealProvider"
+import { useEffect, useState } from "react"
 import type { IMeal, IMeals } from "../../interfaces/IMeals"
 import { getMeals, searchMealByName } from "../../functions/Functions"
 
@@ -12,7 +11,6 @@ export default function Meals() {
   const params = useSearchParams()
   const category = params[0].get("category")
   const search = params[0].get("search")
-  const { searchTerm } = useContext(mealContext) as MealProviderProps
 
   useEffect(() => window.scrollTo({ top: 0, behavior: "smooth" }), [])
 
@@ -20,7 +18,7 @@ export default function Meals() {
     const meals = async () => {
       if (category) {
         setMeals(await getMeals(category ?? ""))
-      } else if (search) {
+      } else if (search && search.trim() !== "") {
         setMeals(await searchMealByName(search ?? ""))
       }
     }
@@ -38,7 +36,7 @@ export default function Meals() {
     <>
       <Button backbutton />
       {category && <List title={`Everything ${category}`} type="meals" items={mealList} />}
-      {search && <List title={`Everything ${searchTerm}`} type="meals" items={mealList} />}
+      {search && <List title={`Everything ${search}`} type="meals" items={mealList} />}
     </>
   )
 }

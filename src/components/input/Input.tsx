@@ -4,7 +4,7 @@ import { mealContext, type MealProviderProps } from "../../context/mealProvider"
 export default function Input() {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { setSearchTerm } = useContext(mealContext) as MealProviderProps
+  const { setSearchTerm, clearingInput, setClearingInput } = useContext(mealContext) as MealProviderProps
 
   useEffect(() => {
     if (inputRef.current) {
@@ -12,6 +12,14 @@ export default function Input() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputRef.current?.value])
+
+  useEffect(() => {
+    if (clearingInput && inputRef.current) {
+      inputRef.current.value = ""
+      setClearingInput(false)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clearingInput])
 
   return (
     <input

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Button from "../button/Button"
 import Input from "../input/Input"
 import { mealContext, type MealProviderProps } from "../../context/mealProvider"
@@ -6,7 +6,17 @@ import { Navigate } from "react-router"
 
 export default function Searchbar() {
   const [navigate, setNavigate] = useState(false)
-  const { searchTerm } = useContext(mealContext) as MealProviderProps
+  const { searchTerm, setClearingInput } = useContext(mealContext) as MealProviderProps
+
+  useEffect(() => {
+    if (navigate) {
+      setTimeout(() => {
+        setNavigate(false)
+        setClearingInput(true)
+      }, 100)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate])
 
   return (
     <>

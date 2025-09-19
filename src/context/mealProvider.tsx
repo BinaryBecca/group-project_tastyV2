@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import type { IMeal } from "../interfaces/IMeals"
 import { createContext, useEffect, useState } from "react"
 import { searchMealByName } from "../functions/Functions"
@@ -10,11 +11,14 @@ export interface MealProviderProps {
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>
   meals: IMeal[]
   setMeals: React.Dispatch<React.SetStateAction<IMeal[]>>
+  clearingInput: boolean
+  setClearingInput: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function MealProvider({ children }: { children: React.ReactNode }) {
   const [searchTerm, setSearchTerm] = useState("")
   const [meals, setMeals] = useState<IMeal[]>([])
+  const [clearingInput, setClearingInput] = useState(false)
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -41,6 +45,8 @@ export default function MealProvider({ children }: { children: React.ReactNode }
         setSearchTerm,
         meals,
         setMeals,
+        clearingInput,
+        setClearingInput,
       }}>
       {children}
     </mealContext.Provider>
