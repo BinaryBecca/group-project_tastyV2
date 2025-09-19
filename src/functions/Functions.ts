@@ -73,6 +73,7 @@ export async function getMealDetails(id: string): Promise<IMealDetail | null> {
         strCategory: mealDetail.strCategory,
         strInstructions: mealDetail.strInstructions,
         strMealThumb: mealDetail.strMealThumb,
+        strYoutube: mealDetail.strYoutube,
         ingredients,
       }
       return meal

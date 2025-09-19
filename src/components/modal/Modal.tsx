@@ -31,22 +31,33 @@ export default function Modal({ meal, onClose }: ModalProps) {
           <div>
             <h2 className="text-4xl py-10">{meal?.strMeal}</h2>
             <ul>
-              {meal?.strInstructions.split("\n").map((description, index) => (
-                <li className="text-xl leading-[1.8] mb-8" key={index}>
-                  • {description}
-                </li>
-              ))}
+              {meal?.strInstructions.split("\n").map(
+                (description, index) =>
+                  description.trim() && (
+                    <li className="text-2xl leading-[1.8] mb-8" key={index}>
+                      • {description}
+                    </li>
+                  )
+              )}
             </ul>
           </div>
           <div>
             <h2 className="text-4xl py-10">Ingredients</h2>
-            <ul>
+
+            <ul className="mb-15">
               {meal.ingredients.map((listItem, index) => (
-                <li className="text-2xl leading-[1.8]" key={index}>
+                <li className="text-3xl leading-[1.8]" key={index}>
                   {listItem.measure} {listItem.ingredient}
                 </li>
               ))}
             </ul>
+
+            <a
+              href={meal.strYoutube}
+              target="_blank"
+              className="text-2xl text-primary font-bold bg-white p-5 rounded-2xl hover:text-white hover:bg-secondary cursor-pointer">
+              Watch on YouTube
+            </a>
           </div>
         </div>
       </section>

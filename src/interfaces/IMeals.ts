@@ -16,6 +16,7 @@ export interface IMealDetail {
   strCategory: string
   strInstructions: string
   strMealThumb: string
+  strYoutube: string
   ingredients: IIngredientList[]
 
   // meals: { [key: string]: null | string }[]
