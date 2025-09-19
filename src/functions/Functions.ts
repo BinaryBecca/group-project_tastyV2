@@ -51,7 +51,30 @@ export async function getMealDetails(id: string): Promise<IMealDetail | null> {
     if (data.meals) {
       console.log(data)
       console.log(data.meals[0])
-      return data.meals[0] ?? null
+      const mealDetail = data.meals[0]
+
+      const ingredients: { ingredient: string; measure: string }[] = []
+      for (let i = 1; i <= 20; i++) {
+        const ingredient = mealDetail[`strIngredient${i}`]
+        const measure = mealDetail[`strMeasure${i}`]
+
+        if (ingredient) {
+          // ingredients.push(`${measure} ${ingredient}`.trim())
+          ingredients.push({
+            ingredient: ingredient.trim(),
+            measure: measure.trim(),
+          })
+        }
+      }
+      const meal: IMealDetail = {
+        idMeal: mealDetail.idMeal,
+        strMeal: mealDetail.strMeal,
+        strCategory: mealDetail.strCategory,
+        strInstructions: mealDetail.strInstructions,
+        strMealThumb: mealDetail.strMealThumb,
+        ingredients,
+      }
+      return meal
     }
   } catch (error) {
     console.error("Fehler beim Abrufen der Details", error)
@@ -59,3 +82,22 @@ export async function getMealDetails(id: string): Promise<IMealDetail | null> {
   }
   return null
 }
+// export async function getMealDetails(id: string): Promise<IMealDetail | null> {
+//   try {
+//     const { data } = await api.get(`/lookup.php?i=${id}`)
+//     if (data.meals) {
+//       console.log(data)
+//       console.log(data.meals[0])
+//       return data.meals[0]
+
+//     if (ingredient) {
+//       ingredientList.push(`${measure} ${ingredient}`.trim())
+//     }
+//   }
+//     }
+//   } catch (error) {
+//     console.error("Fehler beim Abrufen der Details", error)
+//     return null
+//   }
+//   return null
+// }
